@@ -1,0 +1,26 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Committer: Aaron Klein <aklein@kleinlyons.lacal>
+#
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   vagrant/forum/forumdb.py
+#
+# Changes not staged for commit:
+#	modified:   vagrant/tournament/tournament.py
+#	modified:   vagrant/tournament/tournament.sql
+#	modified:   vagrant/tournament/tournament_test.py
+#
+# Untracked files:
+#	.vagrant/
+#	Vagrantfile
+#	vagrant/.vagrant/
+#	vagrant/forum/__pycache__/
+#	vagrant/forum/forumdb.pyc
+#	vagrant/forum/sampleCreator.py
+#	vagrant/tournament/tournament.pyc
+#
