@@ -23,6 +23,7 @@ def testCount():
         raise TypeError(
             "countPlayers() should return numeric zero, not string '0'.")
     if c != 0:
+        print c
         raise ValueError("After deleting, countPlayers should return zero.")
     print "3. After deleting, countPlayers() returns zero."
 
@@ -63,6 +64,7 @@ def testStandingsBeforeMatches():
     registerPlayer("Randy Schwartz")
     standings = playerStandings()
     if len(standings) < 2:
+        print standings
         raise ValueError("Players should appear in playerStandings even before "
                          "they have played any matches.")
     elif len(standings) > 2:

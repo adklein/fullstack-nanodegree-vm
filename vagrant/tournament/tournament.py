@@ -13,15 +13,34 @@ def connect():
 
 def deleteMatches():
     """Remove all the match records from the database."""
+    conn = connect()
+    cur = conn.cursor()
+    sql_command = "DELETE FROM matches;"
+    cur.execute(sql_command)
+    conn.commit()
+    conn.close()
 
 
 def deletePlayers():
     """Remove all the player records from the database."""
-
+    conn = connect()
+    cur = conn.cursor()
+    sql_command = "DELETE FROM players;"
+    cur.execute(sql_command)
+    conn.commit()
+    conn.close()
 
 def countPlayers():
     """Returns the number of players currently registered."""
-
+    conn = connect()
+    cur = conn.cursor()
+    sql_command = "SELECT count(name) as total FROM players;"
+    cur.execute(sql_command)
+    answer = cur.fetchall()
+    answer = answer[0][0]
+    conn.commit()
+    conn.close()
+    return answer
 
 def registerPlayer(name):
     """Adds a player to the tournament database.
@@ -32,7 +51,12 @@ def registerPlayer(name):
     Args:
       name: the player's full name (need not be unique).
     """
-
+    conn = connect()
+    cur = conn.cursor()
+    sql_command = "INSERT INTO players(name) VALUES(%s);"
+    cur.execute(sql_command, (name,))
+    conn.commit()
+    conn.close()
 
 def playerStandings():
     """Returns a list of the players and their win records, sorted by wins.
@@ -47,7 +71,14 @@ def playerStandings():
         wins: the number of matches the player has won
         matches: the number of matches the player has played
     """
-
+    conn = connect()
+    cur = conn.cursor()
+    sql_command = "SELECT * FROM standings ORDER BY w desc;"
+    cur.execute(sql_command)
+    answer = cur.fetchall()
+    conn.commit()
+    conn.close()
+    return answer
 
 def reportMatch(winner, loser):
     """Records the outcome of a single match between two players.
@@ -56,7 +87,13 @@ def reportMatch(winner, loser):
       winner:  the id number of the player who won
       loser:  the id number of the player who lost
     """
- 
+    conn = connect()
+    cur = conn.cursor()
+    sql_command = "INSERT INTO matches (winnerID,loserID) VALUES(%s,%s)"
+    cur.execute(sql_command, (winner,loser))
+    
+    conn.commit()
+    conn.close()
  
 def swissPairings():
     """Returns a list of pairs of players for the next round of a match.
@@ -73,5 +110,10 @@ def swissPairings():
         id2: the second player's unique id
         name2: the second player's name
     """
-
-
+    conn = connect()
+    cur = conn.cursor()
+    
+    
+    
+    conn.commit()
+    conn.close()
