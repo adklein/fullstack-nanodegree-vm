@@ -54,11 +54,11 @@ CREATE VIEW standings AS
     SELECT p.playerID,
     p.name,
     wins.w,
-    losses.l
+    losses.l + wins.w AS mCount
     FROM players AS p LEFT JOIN wins
         ON p.playerID = wins.playerID LEFT JOIN losses
         ON p.playerID = losses.playerID
-    GROUP BY p.playerID, wins.w, losses.l
+    GROUP BY p.playerID, wins.w, mCount
     ORDER BY wins.w desc;
 
 
